@@ -7,25 +7,14 @@ using namespace std;
 class BaseABC
 {
 public: 
-	BaseABC()
-	{
-	}
-	virtual void Init() = 0
-	{
-	}
-	virtual void GetData() = 0
-	{
-	}
+	virtual void Init() = 0;
+	virtual void GetData() = 0;
 };
 
 class ItemA : public BaseABC
 {
 public:
-	ItemA() : BaseABC()
-	{
-
-	}
-	ItemA() : BaseABC()
+	ItemA() 
 	{
 		cout << "Create item A" << endl;
 	}
@@ -38,36 +27,56 @@ public:
 	}
 };
 
-class ItemB : public BaseABC, private ItemZ
+class ZZZ
 {
-private:
-	ItemZ z;
 public:
-	ItemB() : BaseABC()
+	ZZZ()
 	{
 	}
 	void Init()
 	{
-		z.Initialize();
+		cout << "CreateZZZ" << endl;
 	}
-	void GetData(){}
 };
 
-class ItemZ
+class ItemZ : public BaseABC, private ZZZ
 {
+	ZZZ z;
 public:
 	ItemZ()
 	{
 		cout << "Create item Z" << endl;
+		z.Init();
 	}
-	void Initialize()
+	void Init()
 	{
 		cout << "Initialize Z" << endl;
 	}
-	void GetBuffer()
+	void GetData()
 	{
 	}
 };
+
+class AdapterAZ : public BaseABC, private ItemZ
+{
+public:
+	AdapterAZ() : BaseABC()
+	{}
+	AdapterAZ(BaseABC *inBase) : BaseABC()
+	{
+		cout << "RunAdapter" << endl;
+	}
+	void Init()
+	{
+		
+	}
+	void GetData()
+	{
+
+	}
+};
+
+
 
 /*
 class WrapperB : public BaseABC, private ItemB

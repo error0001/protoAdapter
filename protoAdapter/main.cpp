@@ -8,8 +8,12 @@ char ch = 'a';
 
 int main()
 {
-	BaseABC *a = new ItemA();
-	
+	ItemA a;
+	ItemZ *z;
+	BaseABC *adA = new AdapterAZ(a);
+	BaseABC *adZ = new AdapterAZ(z);
+
+
 	//BaseABC *obj = new WrapperB(a);
 
 	do

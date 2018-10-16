@@ -18,9 +18,3 @@ public:
 		oldDraw();
 	}
 };
-
-int main()
-{
-	Figure *r = new FigureAdapter(120, 200, 60, 40);
-	r->draw();
-}

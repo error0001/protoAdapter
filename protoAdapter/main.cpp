@@ -1,17 +1,16 @@
 #include <iostream>
 #include <iomanip>
 #include <conio.h>
-#include "Figure.h"
-#include "LegacyFigure.h"
-#include "FigureAdapter.h"
+#include "curAdapt.h"
 
 using namespace std;
 char ch = 'a';
 
 int main()
 {
-	Figure *f = new FigureAdapter(120, 200, 60, 40);
-	f->draw();
+	BaseABC *a = new ItemA();
+	
+	//BaseABC *obj = new WrapperB(a);
 
 	do
 	{

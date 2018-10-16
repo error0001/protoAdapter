@@ -10,39 +10,80 @@ public:
 	BaseABC()
 	{
 	}
-	virtual void Init() = 0;
-	virtual void GetDataA() = 0;
-	virtual void GetDataB() = 0; 
-};
-
-class WrapperABC : public BaseABC, private ItemA, private ItemB
-{
-public:
-	WrapperABC(BaseABC someABC)
+	virtual void Init() = 0
 	{
-
 	}
-	void Init(){}
+	virtual void GetData() = 0
+	{
+	}
 };
 
 class ItemA : public BaseABC
 {
 public:
-	ItemA()
+	ItemA() : BaseABC()
+	{
+
+	}
+	ItemA() : BaseABC()
 	{
 		cout << "Create item A" << endl;
 	}
-	void Init(){}
-	void GetDataA(){}
+	void Init()
+	{
+		//	BaseABC::Init();
+	}
+	void GetData()
+	{
+	}
 };
 
-class ItemB : public BaseABC
+class ItemB : public BaseABC, private ItemZ
+{
+private:
+	ItemZ z;
+public:
+	ItemB() : BaseABC()
+	{
+	}
+	void Init()
+	{
+		z.Initialize();
+	}
+	void GetData(){}
+};
+
+class ItemZ
 {
 public:
-	ItemB()
+	ItemZ()
 	{
-		cout << "Create item A" << endl;
+		cout << "Create item Z" << endl;
 	}
-	void Init(){}
-	void GetDataB(){}
+	void Initialize()
+	{
+		cout << "Initialize Z" << endl;
+	}
+	void GetBuffer()
+	{
+	}
 };
+
+/*
+class WrapperB : public BaseABC, private ItemB
+{
+public:
+	WrapperB(ItemB inB)
+	{
+
+	}
+	void Init()
+	{
+		cout << "Create wrapper B" << endl;
+	}
+	void GetData()
+	{
+
+	}
+};
+*/

@@ -4,3 +4,4 @@ protoAdapter.vcxproj.filters
 protoAdapter.vcxproj.user
 Debug/
 .vs/
+main.cpp
